@@ -1,6 +1,6 @@
-import { render, createVNode, RenderFunction } from "vue";
+import { Component, createVNode, render } from "vue";
 
-export const useComponent = (component: RenderFunction, props: any = {}) => {
+export const useComponent = (component: Component, props: any = {}) => {
   const box = document.createElement("span");
   const vnode = createVNode(component, props);
   render(vnode, box);

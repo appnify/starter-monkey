@@ -5,19 +5,13 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc --noEmit && vite build",
+    "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
   "devDependencies": {
     "@arco-design/web-vue": "^2.52.0",
-    "@types/jquery": "^3.5.22",
-    "@types/layui-layer": "^1.0.2",
-    "@types/layui-src": "^2.6.1",
     "@vitejs/plugin-vue": "^4.4.0",
     "@vitejs/plugin-vue-jsx": "^3.0.2",
-    "axios": "^1.5.1",
-    "jquery": "^3.7.1",
-    "layui": "^2.7.6",
     "typescript": "^5.1.6",
     "vite": "^4.4.8",
     "vite-plugin-monkey": "^3.4.0",
