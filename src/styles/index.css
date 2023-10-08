@@ -1,3 +1,9 @@
 html body {
   --border-radius-small: 4px;
 }
+.arco-table table td, .arco-table table th {
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  padding: 0;
+}

@@ -2,6 +2,8 @@ import vue from "@vitejs/plugin-vue";
 import jsx from "@vitejs/plugin-vue-jsx";
 import { defineConfig } from "vite";
 import monkey, { cdn, util } from "vite-plugin-monkey";
+import unocss from "unocss/vite";
+import { presetUno, presetIcons } from "unocss";
 
 /**
  * vite 配置
@@ -27,6 +29,21 @@ export default defineConfig({
      * @see https://cn.vitejs.dev/guide/features.html#jsx
      */
     jsx(),
+    /**
+     * Unocss 插件
+     * @see https://unocss.dev/integrations/vite
+     */
+    unocss({
+      presets: [
+        presetUno(),
+        presetIcons({
+          extraProperties: {
+            display: "inline-block",
+            "vertical-align": "-2px",
+          },
+        }),
+      ],
+    }),
     /**
      * 油猴插件
      * @see https://github.com/lisonge/vite-plugin-monkey

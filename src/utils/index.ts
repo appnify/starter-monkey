@@ -10,4 +10,4 @@ export const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve
  * @param selectors
  * @returns
  */
-export const $ = (selectors: keyof HTMLElementTagNameMap) => document.querySelector(selectors);
+export const $ = document.querySelector;
