@@ -6,7 +6,7 @@
 
 使用示例:
 
-![](./.github/images/image-export-json.png)
+![](https://ghproxy.com/https://raw.githubusercontent.com/appnify/starter-monkey/master/.github/images/image-export-json.png)
 
 下载后的 JSON 文件应是如下格式：
 
