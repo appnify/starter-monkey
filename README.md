@@ -2,7 +2,13 @@
 
 ## 图标导出
 
-在 IconFont 的项目中，导出符合 UnoCSS 自定义图标格式的 JSON 文件，该 JSON 对象的属性名为图标的 ID，属性值为对应的 SVG 文本。下载后的 JSON 文件应是如下格式：
+在 IconFont 的项目中，导出符合 UnoCSS 自定义图标格式的 JSON 文件，该 JSON 对象的属性名为图标的 ID，属性值为对应的 SVG 文本。
+
+使用示例:
+
+![](./.github/images/image-export-json.png)
+
+下载后的 JSON 文件应是如下格式：
 
 ```json
 {
