@@ -68,19 +68,19 @@
     setup() {
       const loading = vue.ref(false);
       const btnRef = vue.ref(null);
+      const onBtnRef = (el) => btnRef.value = el;
       const getDetailJSON = async () => {
         const pid = new URLSearchParams(location.search).get("projectId");
         const url = `/api/project/detail.json?pid=${pid}`;
-        const res = await fetch(url);
-        const data = await res.json();
-        if (data.code !== 200) {
-          throw new Error(data.message);
+        const resData = await (await fetch(url)).json();
+        if (resData.code !== 200) {
+          throw new Error(resData.message);
         }
         const result = {};
         for (let {
           show_svg,
           font_class
-        } of data.data.icons) {
+        } of resData.data.icons) {
           show_svg = show_svg.replace("currentColor", "transparent");
           result[font_class] = show_svg;
         }
@@ -99,7 +99,7 @@
         }
       };
       return () => vue.createVNode(webVue.Button, {
-        "ref": (el) => btnRef.value = el,
+        "ref": onBtnRef,
         "type": "primary",
         "size": "small",
         "class": "ml-2",
@@ -113,7 +113,7 @@
       });
     }
   });
-  const files = /* @__PURE__ */ Object.assign({ "./iconfont/index.tsx": __vite_glob_0_0 });
+  const files = /* @__PURE__ */ Object.assign({ "./page-iconfont.tsx": __vite_glob_0_0 });
   const pages = Object.values(files);
   const cssLoader = (e) => {
     const t = GM_getResourceText(e), o = document.createElement("style");
@@ -122,7 +122,7 @@
   cssLoader("@arco-design/web-vue/dist/arco.css");
   const run = () => {
     for (const page of pages) {
-      if (page.when(location.href)) {
+      if (page.when()) {
         page.work();
       }
     }
