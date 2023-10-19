@@ -2,7 +2,7 @@
  * 页面接口
  */
 export interface Page {
-  when: (url: string) => boolean;
+  when: () => boolean;
   work: () => void;
 }
 

@@ -1,6 +1,6 @@
 import { pages } from "@/pages";
-import "@arco-design/web-vue/dist/arco.css";
 import "@/styles/index.css";
+import "@arco-design/web-vue/dist/arco.css";
 import "virtual:uno.css";
 
 /**
@@ -9,7 +9,7 @@ import "virtual:uno.css";
  */
 const run = () => {
   for (const page of pages) {
-    if (page.when(location.href)) {
+    if (page.when()) {
       page.work();
     }
   }

@@ -5,6 +5,10 @@ import { definePage } from "@/utils/page";
 import { Button, Message } from "@arco-design/web-vue";
 import { defineComponent, ref } from "vue";
 
+/**
+ * 下载图标
+ * @description 下载Iconfont项目的图标为JSON文件
+ */
 export default definePage({
   when: () => {
     const isHost = location.hostname === "www.iconfont.cn";
@@ -27,17 +31,17 @@ export const DownloadButton = defineComponent({
   setup() {
     const loading = ref(false);
     const btnRef = ref<HTMLButtonElement | null>(null);
+    const onBtnRef = (el: any) => (btnRef.value = el);
 
     const getDetailJSON = async () => {
       const pid = new URLSearchParams(location.search).get("projectId");
       const url = `/api/project/detail.json?pid=${pid}`;
-      const res = await fetch(url);
-      const data = await res.json();
-      if (data.code !== 200) {
-        throw new Error(data.message);
+      const resData = await (await fetch(url)).json();
+      if (resData.code !== 200) {
+        throw new Error(resData.message);
       }
       const result: Dict = {};
-      for (let { show_svg, font_class } of data.data.icons) {
+      for (let { show_svg, font_class } of resData.data.icons) {
         show_svg = show_svg.replace("currentColor", "transparent");
         result[font_class] = show_svg;
       }
@@ -58,14 +62,7 @@ export const DownloadButton = defineComponent({
     };
 
     return () => (
-      <Button
-        ref={(el: any) => (btnRef.value = el)}
-        type="primary"
-        size="small"
-        class="ml-2"
-        loading={loading.value}
-        onClick={onConfirm}
-      >
+      <Button ref={onBtnRef} type="primary" size="small" class="ml-2" loading={loading.value} onClick={onConfirm}>
         {{
           icon: () => <i class="i-icon-park-outline-download" />,
           default: () => "下载",
