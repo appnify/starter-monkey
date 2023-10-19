@@ -22,34 +22,11 @@
     const el = document.createElement("span");
     const vnode = vue.createVNode(component, props);
     vue.render(vnode, el);
+    const node = vnode.el;
+    const unmount = () => vue.render(null, el);
+    const remove = () => (unmount(), el.remove());
     console.log(vnode);
-    return {
-      /**
-       * 挂载元素
-       */
-      el,
-      /**
-       * 渲染元素
-       */
-      node: vnode.el,
-      /**
-       * 虚拟节点
-       */
-      vnode,
-      /**
-       * 挂载组件
-       */
-      unmount: () => {
-        vue.render(null, el);
-      },
-      /**
-       * 卸载元素
-       */
-      remove: () => {
-        vue.render(null, el);
-        el.remove();
-      }
-    };
+    return { el, node, vnode, unmount, remove };
   };
   const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
   const download = (url, filename) => {
